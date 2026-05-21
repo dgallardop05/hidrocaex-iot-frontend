@@ -1,0 +1,40 @@
+import type { Deposit } from '@/types/deposit.types'
+
+export const mockDeposits: Deposit[] = [
+  {
+    id: '1',
+    name: 'Depósito Norte',
+    waterLevelCm: 285,
+    percentage: 71,
+    liters: 28500,
+    status: 'NORMAL',
+    battery: 87,
+    rssi: -91,
+    snr: 7,
+    updatedAt: 'Hace 2 min',
+  },
+  {
+    id: '2',
+    name: 'Depósito Sur',
+    waterLevelCm: 120,
+    percentage: 30,
+    liters: 12000,
+    status: 'WARNING',
+    battery: 63,
+    rssi: -95,
+    snr: 5,
+    updatedAt: 'Hace 1 min',
+  },
+  {
+    id: '3',
+    name: 'Depósito Este',
+    waterLevelCm: 40,
+    percentage: 10,
+    liters: 4000,
+    status: 'CRITICAL',
+    battery: 25,
+    rssi: -101,
+    snr: 2,
+    updatedAt: 'Hace 5 min',
+  },
+]

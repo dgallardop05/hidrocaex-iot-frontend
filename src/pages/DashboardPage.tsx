@@ -1,39 +1,39 @@
+import DepositCard from '@/components/dashboard/DepositCard'
+import { mockDeposits } from '@/constants/mockDeposits'
+
 const DashboardPage = () => {
   return (
     <div className="
       flex
       flex-col
-      gap-4
+      gap-6
       w-full
     ">
-      <h2 className="text-3xl font-bold">
-        Dashboard General
-      </h2>
+      <div className="
+        flex
+        flex-col
+        gap-2
+      ">
+        <h2 className="text-3xl font-bold">
+          Dashboard General
+        </h2>
+
+        <p className="text-gray-400">
+          Monitorización de depósitos hidráulicos
+        </p>
+      </div>
 
       <div className="
         flex
         flex-wrap
-        gap-4
+        gap-6
       ">
-        <div className="
-          bg-gray-800
-          rounded-xl
-          p-6
-          min-w-[300px]
-          flex-1
-        ">
-          Depósito 1
-        </div>
-
-        <div className="
-          bg-gray-800
-          rounded-xl
-          p-6
-          min-w-[300px]
-          flex-1
-        ">
-          Depósito 2
-        </div>
+        {mockDeposits.map((deposit) => (
+          <DepositCard
+            key={deposit.id}
+            deposit={deposit}
+          />
+        ))}
       </div>
     </div>
   )
