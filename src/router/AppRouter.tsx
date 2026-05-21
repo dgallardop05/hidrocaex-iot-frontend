@@ -7,6 +7,7 @@ import {
 import MainLayout from '@/layouts/MainLayout'
 import DashboardPage from '@/pages/DashboardPage'
 import AlertsPage from '@/pages/AlertsPage'
+import DepositDetailPage from '@/pages/DepositDetailPage'
 
 const AppRouter = () => {
   return (
@@ -20,6 +21,10 @@ const AppRouter = () => {
           <Route
             path="/alerts"
             element={<AlertsPage />}
+          />
+          <Route
+            path="/deposit/:id"
+            element={<DepositDetailPage />}
           />
         </Route>
       </Routes>
