@@ -1,12 +1,24 @@
 import { Outlet } from 'react-router-dom'
-import Navbar from '@/components/layout/Navbar'
+
+import Sidebar from '@/components/layout/Sidebar'
 
 const MainLayout = () => {
   return (
-    <div className="min-h-screen bg-gray-900 text-white flex flex-col">
-      <Navbar />
+    <div className="
+      min-h-screen
+      bg-gray-900
+      text-white
+      flex
+      flex-col
+      lg:flex-row
+    ">
+      <Sidebar />
 
-      <main className="flex flex-1 p-4">
+      <main className="
+        flex-1
+        p-6
+        flex
+      ">
         <Outlet />
       </main>
     </div>

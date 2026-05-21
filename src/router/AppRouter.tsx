@@ -6,6 +6,7 @@ import {
 
 import MainLayout from '@/layouts/MainLayout'
 import DashboardPage from '@/pages/DashboardPage'
+import AlertsPage from '@/pages/AlertsPage'
 
 const AppRouter = () => {
   return (
@@ -15,6 +16,10 @@ const AppRouter = () => {
           <Route
             path="/"
             element={<DashboardPage />}
+          />
+          <Route
+            path="/alerts"
+            element={<AlertsPage />}
           />
         </Route>
       </Routes>

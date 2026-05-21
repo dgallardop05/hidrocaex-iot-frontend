@@ -1,5 +1,6 @@
 import DepositCard from '@/components/dashboard/DepositCard'
 import { mockDeposits } from '@/constants/mockDeposits'
+import WaterLevelChart from '@/components/dashboard/WaterLevelChart'
 
 const DashboardPage = () => {
   return (
@@ -34,6 +35,18 @@ const DashboardPage = () => {
             deposit={deposit}
           />
         ))}
+      </div>
+
+      <div className="
+        flex
+        flex-col
+        gap-4
+      ">
+        <h3 className="text-2xl font-semibold">
+          Histórico general
+        </h3>
+
+        <WaterLevelChart />
       </div>
     </div>
   )
