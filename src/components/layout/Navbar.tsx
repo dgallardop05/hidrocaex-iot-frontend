@@ -12,6 +12,9 @@ const Navbar = () => {
           <div className={styles.indicator} />
 
           <span>Gateway Online</span>
+          <span>
+            • Actualización automática
+          </span>
         </div>
       </div>
     </header>

@@ -81,7 +81,8 @@ const DepositCard = ({ deposit }: Props) => {
               </span>
 
               <span className={styles.value}>
-                {deposit.liters.toLocaleString()} L
+                {(deposit.liters ?? 0)
+                   .toLocaleString()} L
               </span>
             </div>
 

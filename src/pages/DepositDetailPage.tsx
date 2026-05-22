@@ -1,13 +1,35 @@
 import { useParams } from 'react-router-dom'
 
-import { mockDeposits } from '@/constants/mockDeposits'
+import WaterLevelChart from '@/components/dashboard/WaterLevelChart'
+
+import { useDepositHistory } from '@/hooks/useDepositHistory'
+
+import { useDeposit } from '@/hooks/useDeposit'
 
 const DepositDetailPage = () => {
   const { id } = useParams()
 
-  const deposit = mockDeposits.find(
-    (item) => item.id === id,
+  const {
+    deposit,
+    loading: depositLoading,
+  } = useDeposit(
+    id ?? '',
   )
+
+  const {
+    history,
+    loading: historyLoading,
+  } = useDepositHistory(
+    id ?? '',
+  )
+
+  if (depositLoading) {
+    return (
+      <div className="text-white">
+        Cargando depósito...
+      </div>
+    )
+  }
 
   if (!deposit) {
     return (
@@ -63,38 +85,66 @@ const DepositDetailPage = () => {
           ">
             <div className="flex justify-between">
               <span>Nivel agua</span>
-              <strong>{deposit.waterLevelCm} cm</strong>
+
+              <strong>
+                {deposit.waterLevelCm} cm
+              </strong>
             </div>
 
             <div className="flex justify-between">
               <span>Porcentaje</span>
-              <strong>{deposit.percentage}%</strong>
+
+              <strong>
+                {deposit.percentage}%
+              </strong>
             </div>
 
             <div className="flex justify-between">
               <span>Litros</span>
+
               <strong>
-                {deposit.liters.toLocaleString()} L
+                {(deposit.liters ?? 0)
+                  .toLocaleString()} L
               </strong>
             </div>
 
             <div className="flex justify-between">
               <span>Batería</span>
-              <strong>{deposit.battery}%</strong>
+
+              <strong>
+                {deposit.battery}%
+              </strong>
             </div>
 
             <div className="flex justify-between">
               <span>RSSI</span>
-              <strong>{deposit.rssi}</strong>
+
+              <strong>
+                {deposit.rssi}
+              </strong>
             </div>
 
             <div className="flex justify-between">
               <span>SNR</span>
-              <strong>{deposit.snr}</strong>
+
+              <strong>
+                {deposit.snr}
+              </strong>
             </div>
           </div>
         </div>
       </div>
+
+      {historyLoading ? (
+        <div className="text-white">
+          Cargando histórico...
+        </div>
+      ) : (
+        <WaterLevelChart
+          title="Histórico de nivel"
+          data={history}
+        />
+      )}
     </div>
   )
 }

@@ -2,6 +2,8 @@ import { Outlet } from 'react-router-dom'
 
 import Sidebar from '@/components/layout/Sidebar'
 
+import Navbar from '@/components/layout/Navbar'
+
 const MainLayout = () => {
   return (
     <div className="
@@ -14,13 +16,21 @@ const MainLayout = () => {
     ">
       <Sidebar />
 
-      <main className="
-        flex-1
-        p-6
+      <div className="
         flex
+        flex-col
+        flex-1
       ">
-        <Outlet />
-      </main>
+        <Navbar />
+
+        <main className="
+          flex-1
+          p-6
+          flex
+        ">
+          <Outlet />
+        </main>
+      </div>
     </div>
   )
 }

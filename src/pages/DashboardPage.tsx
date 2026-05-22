@@ -1,8 +1,28 @@
 import DepositCard from '@/components/dashboard/DepositCard'
-import { mockDeposits } from '@/constants/mockDeposits'
 import WaterLevelChart from '@/components/dashboard/WaterLevelChart'
+import { mockHistory } from '@/constants/mockHistory'
+import { useDeposits } from '@/hooks/useDeposits'
+import AlertsPanel from '@/components/alerts/AlertsPanel'
+import { useAlerts } from '@/hooks/useAlerts'
 
 const DashboardPage = () => {
+  const {
+    deposits,
+    loading,
+  } = useDeposits()
+
+  const {
+    alerts,
+  } = useAlerts(deposits)
+
+  if (loading) {
+    return (
+      <div className="text-white">
+        Cargando depósitos...
+      </div>
+    )
+  }
+
   return (
     <div className="
       flex
@@ -24,12 +44,14 @@ const DashboardPage = () => {
         </p>
       </div>
 
+      <AlertsPanel alerts={alerts} />
+
       <div className="
         flex
         flex-wrap
         gap-6
       ">
-        {mockDeposits.map((deposit) => (
+        {deposits.map((deposit) => (
           <DepositCard
             key={deposit.id}
             deposit={deposit}
@@ -46,7 +68,10 @@ const DashboardPage = () => {
           Histórico general
         </h3>
 
-        <WaterLevelChart />
+        <WaterLevelChart
+          title="Histórico general"
+          data={mockHistory['1']}
+        />
       </div>
     </div>
   )

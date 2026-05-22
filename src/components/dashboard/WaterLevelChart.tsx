@@ -7,15 +7,17 @@ import {
   Tooltip,
 } from 'recharts'
 
-const data = [
-  { time: '08:00', level: 78 },
-  { time: '10:00', level: 75 },
-  { time: '12:00', level: 73 },
-  { time: '14:00', level: 70 },
-  { time: '16:00', level: 68 },
-]
+import type { WaterLevelHistory } from '@/types/history.types'
 
-const WaterLevelChart = () => {
+interface Props {
+  data: WaterLevelHistory[]
+  title: string
+}
+
+const WaterLevelChart = ({
+  data,
+  title,
+}: Props) => {
   return (
     <div className="
       bg-gray-800
@@ -27,18 +29,18 @@ const WaterLevelChart = () => {
       h-[320px]
     ">
       <h3 className="text-xl font-semibold mb-6">
-        Histórico de nivel
+        {title}
       </h3>
 
       <ResponsiveContainer width="100%" height="100%">
         <LineChart data={data}>
-          <XAxis dataKey="time" />
+          <XAxis dataKey="timestamp" />
           <YAxis />
           <Tooltip />
 
           <Line
             type="monotone"
-            dataKey="level"
+            dataKey="percentage"
             stroke="#2563eb"
             strokeWidth={3}
           />
