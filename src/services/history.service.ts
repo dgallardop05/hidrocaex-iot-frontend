@@ -4,8 +4,10 @@ from '@/services/api/apiClient'
 import { API_ENDPOINTS }
 from '@/services/api/endpoints'
 
-import { mapHistoryDtoToDomain }
-from '@/mappers/history.mapper'
+import {
+  mapHistoryDtoToDomain,
+  mapGeneralHistorySeries,
+} from '@/mappers/history.mapper'
 
 import type {
   HistoricoDepositoDto,
@@ -14,6 +16,10 @@ import type {
 import type {
   WaterLevelHistory,
 } from '@/types/history.types'
+
+import type {
+  GeneralHistorySeries,
+} from '@/types/general-history.types'
 
 export const getDepositHistory = async (
   depositId: string,
@@ -33,16 +39,16 @@ export const getDepositHistory = async (
 }
 
 export const getGeneralHistory = async (): Promise<
-  WaterLevelHistory[]
+  GeneralHistorySeries[]
 > => {
   const response =
     await apiClient.get<
-      HistoricoDepositoDto
+      HistoricoDepositoDto[]
     >(
       API_ENDPOINTS.generalHistory,
     )
 
-  return mapHistoryDtoToDomain(
+  return mapGeneralHistorySeries(
     response.data,
   )
 }

@@ -1,5 +1,10 @@
 import axios from 'axios'
 
+import {
+  getServerOfflineStatus,
+  setServerOfflineStatus,
+} from '@/services/system/serverStatus'
+
 export const apiClient = axios.create({
   baseURL: import.meta.env.VITE_API_BASE_URL,
 
@@ -41,6 +46,17 @@ apiClient.interceptors.response.use(
       error.response?.status,
       error.message,
     )
+
+    const alreadyOffline =
+      getServerOfflineStatus()
+
+    if (!alreadyOffline) {
+      setServerOfflineStatus(true)
+
+      window.dispatchEvent(
+        new Event('api-offline'),
+      )
+    }
 
     return Promise.reject(error)
   },

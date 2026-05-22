@@ -1,15 +1,27 @@
 import DepositCard from '@/components/dashboard/DepositCard'
-import WaterLevelChart from '@/components/dashboard/WaterLevelChart'
-import { mockHistory } from '@/constants/mockHistory'
-import { useDeposits } from '@/hooks/useDeposits'
+
 import AlertsPanel from '@/components/alerts/AlertsPanel'
+
+import { useDeposits } from '@/hooks/useDeposits'
 import { useAlerts } from '@/hooks/useAlerts'
+
+import GeneralHistoryChart
+from '@/components/dashboard/GeneralHistoryChart'
+
+import {
+  useGeneralHistory,
+} from '@/hooks/useGeneralHistory'
 
 const DashboardPage = () => {
   const {
     deposits,
     loading,
   } = useDeposits()
+
+  const {
+    history,
+    loading: historyLoading,
+  } = useGeneralHistory()
 
   const {
     alerts,
@@ -68,10 +80,15 @@ const DashboardPage = () => {
           Histórico general
         </h3>
 
-        <WaterLevelChart
-          title="Histórico general"
-          data={mockHistory['1']}
-        />
+        {historyLoading ? (
+          <div className="text-white">
+            Cargando histórico...
+          </div>
+        ) : (
+          <GeneralHistoryChart
+            data={history}
+          />
+        )}
       </div>
     </div>
   )
