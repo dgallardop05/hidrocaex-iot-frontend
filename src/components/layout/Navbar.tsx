@@ -1,6 +1,31 @@
-import styles from './Navbar.module.css'
+import styles
+from './Navbar.module.css'
+
+import {
+  useLastUpdate,
+} from '@/hooks/useLastUpdate'
+
+import {
+  Wifi,
+  RefreshCw,
+  Clock3,
+} from 'lucide-react'
 
 const Navbar = () => {
+  const {
+    lastUpdate,
+  } = useLastUpdate()
+
+  const formattedTime =
+    lastUpdate.toLocaleTimeString(
+      'es-ES',
+      {
+        hour: '2-digit',
+        minute: '2-digit',
+        second: '2-digit',
+      },
+    )
+
   return (
     <header className={styles.navbar}>
       <div className={styles.container}>
@@ -9,12 +34,34 @@ const Navbar = () => {
         </h1>
 
         <div className={styles.status}>
-          <div className={styles.indicator} />
+          <div className={styles.statusItem}>
+            <div className={styles.indicator} />
 
-          <span>Gateway Online</span>
-          <span>
-            • Actualización automática
-          </span>
+            <Wifi size={16} />
+
+            <span>
+              Gateway Online
+            </span>
+          </div>
+
+          <div className={styles.statusItem}>
+            <RefreshCw
+              size={15}
+              className={styles.spin}
+            />
+
+            <span>
+              Auto-refresh
+            </span>
+          </div>
+
+          <div className={styles.statusItem}>
+            <Clock3 size={15} />
+
+            <span>
+              {formattedTime}
+            </span>
+          </div>
         </div>
       </div>
     </header>

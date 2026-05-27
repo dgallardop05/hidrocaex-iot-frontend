@@ -46,6 +46,17 @@ export const useDepositHistory = (
     }
 
     void loadHistory()
+
+    const interval = setInterval(
+      () => {
+        void loadHistory()
+      },
+      15000,
+    )
+
+    return () => {
+      clearInterval(interval)
+    }
   }, [depositId])
 
   return {

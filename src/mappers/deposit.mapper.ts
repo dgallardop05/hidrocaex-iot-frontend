@@ -14,17 +14,46 @@ export const mapDepositDtoToDomain = (
 
     name: dto.nombre,
 
+    deviceEui: undefined,
+
+    heightCm:
+      dto.alturaCm,
+
+    lengthCm: 0,
+
+    widthCm: 0,
+
+    offsetSensorCm: 0,
+
+    minLevelCm: 0,
+
+    criticalMinLevelCm: 0,
+
+    maxMarginCm: 0,
+
+    criticalMaxMarginCm: 0,
+
     waterLevelCm:
-      dto.alturaAguaCm ?? 0,
+      Number(
+        (
+          dto.alturaAguaCm ?? 0
+        ).toFixed(1),
+      ),
 
     percentage:
-      dto.porcentaje ?? 0,
+      Number(
+        (
+          dto.porcentaje ?? 0
+        ).toFixed(1),
+      ),
 
     liters:
-      dto.litros ?? 0,
+      Math.round(
+        dto.litros ?? 0,
+      ),
 
     status: dto.estado
-      ? (dto.estado as DepositStatus)
+      ? dto.estado as DepositStatus
       : 'OFFLINE',
 
     battery:

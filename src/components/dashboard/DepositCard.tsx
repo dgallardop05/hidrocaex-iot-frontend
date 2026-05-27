@@ -9,21 +9,42 @@ interface Props {
 }
 
 const DepositCard = ({ deposit }: Props) => {
-  const getStatusClass = () => {
+  const getStatusConfig = () => {
     switch (deposit.status) {
       case 'NORMAL':
-        return styles.normal
+        return {
+          className: styles.normal,
+          label: 'NORMAL',
+        }
 
-      case 'WARNING':
-        return styles.warning
+      case 'NIVEL_MINIMO':
+        return {
+          className: styles.warning,
+          label: 'NIVEL BAJO',
+        }
 
-      case 'CRITICAL':
-        return styles.critical
+      case 'NIVEL_CRITICO':
+        return {
+          className: styles.critical,
+          label: 'CRÍTICO',
+        }
 
       case 'OFFLINE':
-        return styles.offline
+        return {
+          className: styles.offline,
+          label: 'OFFLINE',
+        }
+
+      default:
+        return {
+          className: styles.offline,
+          label: deposit.status,
+        }
     }
   }
+
+const status =
+  getStatusConfig()
 
   return (
     <Link
@@ -38,9 +59,9 @@ const DepositCard = ({ deposit }: Props) => {
 
           <div className={`
             ${styles.status}
-            ${getStatusClass()}
+            ${status.className}
           `}>
-            {deposit.status}
+            {status.label}
           </div>
         </div>
 
@@ -61,7 +82,7 @@ const DepositCard = ({ deposit }: Props) => {
               </span>
 
               <span className={styles.value}>
-                {deposit.waterLevelCm} cm
+                {deposit.waterLevelCm.toFixed(1)} cm
               </span>
             </div>
 
@@ -71,7 +92,7 @@ const DepositCard = ({ deposit }: Props) => {
               </span>
 
               <span className={styles.value}>
-                {deposit.percentage}%
+                {deposit.percentage.toFixed(1)}%
               </span>
             </div>
 
@@ -102,7 +123,17 @@ const DepositCard = ({ deposit }: Props) => {
               </span>
 
               <span className={styles.value}>
-                {deposit.rssi}
+                {deposit.rssi} dBm
+              </span>
+            </div>
+
+            <div className={styles.metric}>
+              <span className={styles.label}>
+                SNR
+              </span>
+
+              <span className={styles.value}>
+                {deposit.snr} dB
               </span>
             </div>
 

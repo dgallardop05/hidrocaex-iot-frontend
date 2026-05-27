@@ -1,5 +1,6 @@
 export interface DashboardDepositDto {
   depositoId: number
+
   nombre: string
 
   alturaCm: number

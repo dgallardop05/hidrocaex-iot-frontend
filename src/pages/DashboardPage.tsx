@@ -12,6 +12,8 @@ import {
   useGeneralHistory,
 } from '@/hooks/useGeneralHistory'
 
+import KpiCard from '@/components/dashboard/KpiCard'
+
 const DashboardPage = () => {
   const {
     deposits,
@@ -35,6 +37,36 @@ const DashboardPage = () => {
     )
   }
 
+  const onlineDeposits =
+    deposits.filter(
+      (deposit) =>
+        deposit.status !== 'OFFLINE',
+    ).length
+
+  const totalLiters =
+    deposits.reduce(
+      (acc, deposit) =>
+        acc + deposit.liters,
+      0,
+    )
+
+  const activeAlerts =
+    deposits.filter(
+      (deposit) =>
+        deposit.status ===
+          'NIVEL_MINIMO'
+        ||
+        deposit.status ===
+          'NIVEL_CRITICO',
+    ).length
+
+  const lastUpdate =
+    deposits.find(
+      (deposit) =>
+        deposit.updatedAt !==
+        'Sin datos',
+    )?.updatedAt ?? '—'
+
   return (
     <div className="
       flex
@@ -54,6 +86,36 @@ const DashboardPage = () => {
         <p className="text-gray-400">
           Monitorización de depósitos hidráulicos
         </p>
+      </div>
+
+      <div className="
+        flex
+        flex-wrap
+        gap-6
+      ">
+        <KpiCard
+          title="Sensores online"
+          value={`${onlineDeposits}/${deposits.length}`}
+          subtitle="Conectados al gateway"
+        />
+
+        <KpiCard
+          title="Litros totales"
+          value={`${totalLiters.toLocaleString()} L`}
+          subtitle="Capacidad actual"
+        />
+
+        <KpiCard
+          title="Alertas activas"
+          value={activeAlerts.toString()}
+          subtitle="Depósitos en riesgo"
+        />
+
+        <KpiCard
+          title="Última actualización"
+          value={lastUpdate}
+          subtitle="Último uplink recibido"
+        />
       </div>
 
       <AlertsPanel alerts={alerts} />
