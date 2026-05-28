@@ -215,6 +215,162 @@ const DepositDetailPage = () => {
             md:grid-cols-2
             gap-6
           ">
+          <div className="
+            bg-gradient-to-br
+            from-slate-800
+            to-slate-900
+
+            border
+            border-blue-900/30
+
+            rounded-3xl
+
+            p-6
+
+            shadow-xl
+            shadow-black/20
+          ">
+            <div className="
+              flex
+              items-center
+              gap-3
+
+              mb-6
+            ">
+              <Radio
+                size={24}
+                className="
+                  text-cyan-400
+                "
+              />
+
+              <h3 className="
+                text-2xl
+                font-bold
+                text-white
+              ">
+                Información LoRaWAN
+              </h3>
+            </div>
+
+            <div className="
+              grid
+              grid-cols-1
+              md:grid-cols-2
+              gap-6
+            ">
+              <div className="
+                flex
+                flex-col
+                gap-2
+              ">
+                <span className="
+                  text-gray-400
+                  text-sm
+                ">
+                  Device EUI
+                </span>
+
+                <span className="
+                  text-lg
+                  font-bold
+                  text-white
+                  break-all
+                ">
+                  {deposit.deviceEui
+                    ?? 'Sin datos'}
+                </span>
+              </div>
+
+              <div className="
+                flex
+                flex-col
+                gap-2
+              ">
+                <span className="
+                  text-gray-400
+                  text-sm
+                ">
+                  Device Name
+                </span>
+
+                <span className="
+                  text-lg
+                  font-bold
+                  text-white
+                ">
+                  {deposit.deviceName
+                    ?? 'Sin datos'}
+                </span>
+              </div>
+
+              <div className="
+                flex
+                flex-col
+                gap-2
+              ">
+                <span className="
+                  text-gray-400
+                  text-sm
+                ">
+                  Gateway Time
+                </span>
+
+                <span className="
+                  text-lg
+                  font-bold
+                  text-white
+                ">
+                  {deposit.gatewayTime
+                    ?? 'Sin datos'}
+                </span>
+              </div>
+
+              <div className="
+                flex
+                flex-col
+                gap-2
+              ">
+                <span className="
+                  text-gray-400
+                  text-sm
+                ">
+                  Radar RSSI
+                </span>
+
+                <span className="
+                  text-lg
+                  font-bold
+                  text-white
+                ">
+                  {deposit.radarSignalRssi
+                    ?? 'Sin datos'}
+                </span>
+              </div>
+
+              <div className="
+                flex
+                flex-col
+                gap-2
+              ">
+                <span className="
+                  text-gray-400
+                  text-sm
+                ">
+                  Posición
+                </span>
+
+                <span className="
+                  text-lg
+                  font-bold
+                  text-white
+                ">
+                  {deposit.position
+                    ?? 'Sin datos'}
+                </span>
+              </div>
+            </div>
+          </div>
             <div className="
               bg-gradient-to-br
               from-slate-800
@@ -340,65 +496,6 @@ const DepositDetailPage = () => {
                 font-black
               ">
                 {deposit.battery}%
-              </div>
-            </div>
-
-            <div className="
-              bg-gradient-to-br
-              from-slate-800
-              to-slate-900
-
-              border
-              border-blue-900/30
-
-              rounded-3xl
-
-              p-6
-            ">
-              <div className="
-                flex
-                items-center
-                gap-3
-
-                mb-4
-              ">
-                <Radio
-                  size={22}
-                  className="
-                    text-orange-400
-                  "
-                />
-
-                <h3 className="
-                  text-lg
-                  font-bold
-                ">
-                  Señal LoRaWAN
-                </h3>
-              </div>
-
-              <div className="
-                flex
-                flex-col
-                gap-2
-              ">
-                <span className="
-                  text-xl
-                  font-bold
-                ">
-                  RSSI:
-                  {' '}
-                  {deposit.rssi} dBm
-                </span>
-
-                <span className="
-                  text-xl
-                  font-bold
-                ">
-                  SNR:
-                  {' '}
-                  {deposit.snr} dB
-                </span>
               </div>
             </div>
           </div>

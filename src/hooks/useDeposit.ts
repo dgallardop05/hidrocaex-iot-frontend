@@ -6,6 +6,9 @@ import {
 import { getDepositById }
 from '@/services/deposit.service'
 
+import { getLastMeasurement }
+from '@/services/measurement.service'
+
 import type {
   Deposit,
 } from '@/types/deposit.types'
@@ -28,12 +31,38 @@ export const useDeposit = (
 
     const loadDeposit = async () => {
       try {
-        const data =
+        const depositData =
           await getDepositById(
             depositId,
           )
 
-        setDeposit(data ?? null)
+        const measurementData =
+          await getLastMeasurement(
+            depositId,
+          )
+
+        const mergedDeposit = {
+          ...depositData,
+
+          deviceEui:
+            measurementData.deviceEui,
+
+          deviceName:
+            measurementData.deviceName,
+
+          gatewayTime:
+            measurementData.gatewayTime,
+
+          radarSignalRssi:
+            measurementData.radarSignalRssi,
+
+          position:
+            measurementData.position,
+        }
+
+        setDeposit(
+          mergedDeposit ?? null,
+        )
       } catch (error) {
         console.error(error)
       } finally {

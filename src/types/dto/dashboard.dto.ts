@@ -20,4 +20,14 @@ export interface DashboardDepositDto {
   snr: number | null
 
   timestamp: string | null
+
+  deviceEui: string | null
+
+  deviceName: string | null
+
+  gatewayTime: string | null
+
+  radarSignalRssi: number | null
+
+  position: number | null
 }

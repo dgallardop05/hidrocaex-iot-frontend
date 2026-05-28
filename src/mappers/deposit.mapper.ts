@@ -14,7 +14,20 @@ export const mapDepositDtoToDomain = (
 
     name: dto.nombre,
 
-    deviceEui: undefined,
+    deviceEui:
+      dto.deviceEui ?? undefined,
+
+    deviceName:
+      dto.deviceName ?? undefined,
+
+    gatewayTime:
+      dto.gatewayTime ?? undefined,
+
+    radarSignalRssi:
+      dto.radarSignalRssi ?? undefined,
+
+    position:
+      dto.position ?? undefined,
 
     heightCm:
       dto.alturaCm,

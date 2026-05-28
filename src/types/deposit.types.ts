@@ -11,6 +11,14 @@ export interface Deposit {
 
   deviceEui?: string
 
+  deviceName?: string
+
+  gatewayTime?: string
+
+  radarSignalRssi?: number
+
+  position?: number
+
   heightCm: number
 
   widthCm: number

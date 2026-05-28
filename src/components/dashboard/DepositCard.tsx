@@ -119,26 +119,6 @@ const status =
 
             <div className={styles.metric}>
               <span className={styles.label}>
-                RSSI
-              </span>
-
-              <span className={styles.value}>
-                {deposit.rssi} dBm
-              </span>
-            </div>
-
-            <div className={styles.metric}>
-              <span className={styles.label}>
-                SNR
-              </span>
-
-              <span className={styles.value}>
-                {deposit.snr} dB
-              </span>
-            </div>
-
-            <div className={styles.metric}>
-              <span className={styles.label}>
                 Última actualización
               </span>
 
