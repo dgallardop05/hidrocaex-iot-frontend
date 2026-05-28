@@ -1,7 +1,7 @@
 export type DepositStatus =
   | 'NORMAL'
-  | 'WARNING'
-  | 'CRITICAL'
+  | 'NIVEL_MINIMO'
+  | 'NIVEL_CRITICO'
   | 'OFFLINE'
 
 export interface Deposit {

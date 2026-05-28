@@ -1,0 +1,5 @@
+import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
+const ServerOffline = () => {
+    return (_jsxs("div", { className: "\r\n      flex\r\n      flex-col\r\n      items-center\r\n      justify-center\r\n      gap-6\r\n\r\n      min-h-screen\r\n\r\n      text-white\r\n    ", children: [_jsx("div", { className: "\r\n        w-20\r\n        h-20\r\n\r\n        rounded-full\r\n\r\n        bg-red-500/20\r\n\r\n        flex\r\n        items-center\r\n        justify-center\r\n      ", children: _jsx("div", { className: "\r\n          w-8\r\n          h-8\r\n\r\n          rounded-full\r\n\r\n          bg-red-500\r\n        " }) }), _jsxs("div", { className: "\r\n        flex\r\n        flex-col\r\n        items-center\r\n        gap-2\r\n      ", children: [_jsx("h1", { className: "\r\n          text-4xl\r\n          font-bold\r\n        ", children: "Servidor en mantenimiento" }), _jsx("p", { className: "\r\n          text-gray-400\r\n          text-lg\r\n        ", children: "Reconectando autom\u00E1ticamente..." })] })] }));
+};
+export default ServerOffline;

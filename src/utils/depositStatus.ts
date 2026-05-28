@@ -1,14 +1,16 @@
-import type { DepositStatus } from '@/types/deposit.types'
+import type {
+  DepositStatus,
+} from '@/types/deposit.types'
 
 export const calculateDepositStatus = (
   percentage: number,
 ): DepositStatus => {
   if (percentage <= 15) {
-    return 'CRITICAL'
+    return 'NIVEL_CRITICO'
   }
 
   if (percentage <= 40) {
-    return 'WARNING'
+    return 'NIVEL_MINIMO'
   }
 
   return 'NORMAL'

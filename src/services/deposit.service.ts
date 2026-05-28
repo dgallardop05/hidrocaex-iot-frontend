@@ -1,5 +1,3 @@
-import { mockDeposits } from '@/constants/mockDeposits'
-
 import type { Deposit } from '@/types/deposit.types'
 
 import { apiClient } from '@/services/api/apiClient'
@@ -11,18 +9,9 @@ from '@/mappers/deposit.mapper'
 import type { DashboardDepositDto }
 from '@/types/dto/dashboard.dto'
 
-const USE_MOCKS = false
-
 export const getDeposits = async (): Promise<
   Deposit[]
 > => {
-  if (USE_MOCKS) {
-    return new Promise((resolve) => {
-      setTimeout(() => {
-        resolve(mockDeposits)
-      }, 500)
-    })
-  }
 
   const response =
     await apiClient.get<

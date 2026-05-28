@@ -42,7 +42,7 @@ export const useDeposit = (
           )
 
         const mergedDeposit = {
-          ...depositData,
+          ...(depositData as Deposit),
 
           deviceEui:
             measurementData.deviceEui,
