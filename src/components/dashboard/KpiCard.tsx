@@ -34,7 +34,7 @@ const KpiCard = ({
       shadow-xl
       shadow-black/30
 
-      min-w-[220px]
+      min-w-0
 
       flex-1
     ">

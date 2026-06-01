@@ -89,9 +89,12 @@ const DashboardPage = () => {
       </div>
 
       <div className="
-        flex
-        flex-wrap
+        grid
         gap-6
+
+        grid-cols-1
+        md:grid-cols-2
+        xl:grid-cols-4
       ">
         <KpiCard
           title="Sensores online"
@@ -121,8 +124,9 @@ const DashboardPage = () => {
       <AlertsPanel alerts={alerts} />
 
       <div className="
-        flex
-        flex-wrap
+        grid
+        grid-cols-1
+        xl:grid-cols-2
         gap-6
       ">
         {deposits.map((deposit) => (
@@ -133,7 +137,7 @@ const DashboardPage = () => {
         ))}
       </div>
 
-      <div className="
+      {/*}/<div className="
         flex
         flex-col
         gap-4
@@ -151,7 +155,7 @@ const DashboardPage = () => {
             data={history}
           />
         )}
-      </div>
+      </div>*/}
     </div>
   )
 }

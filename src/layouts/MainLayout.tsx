@@ -1,7 +1,5 @@
 import { Outlet } from 'react-router-dom'
 
-import Sidebar from '@/components/layout/Sidebar'
-
 import Navbar from '@/components/layout/Navbar'
 
 const MainLayout = () => {
@@ -15,57 +13,50 @@ const MainLayout = () => {
       to-[#0b1730]
 
       text-white
-
-      flex
-      flex-col
-      lg:flex-row
-
-      overflow-hidden
     ">
-      <Sidebar />
-
       <div className="
         flex
         flex-col
-        flex-1
+        min-h-screen
 
         backdrop-blur-sm
       ">
-      <div className="
-        fixed
+        <div className="
+          fixed
 
-        top-[-200px]
-        right-[-200px]
+          top-[-200px]
+          right-[-200px]
 
-        w-[500px]
-        h-[500px]
+          w-[500px]
+          h-[500px]
 
-        rounded-full
+          rounded-full
 
-        bg-blue-500/10
+          bg-blue-500/10
 
-        blur-3xl
+          blur-3xl
 
-        pointer-events-none
-      "/>
+          pointer-events-none
+        "/>
 
-      <div className="
-        fixed
+        <div className="
+          fixed
 
-        bottom-[-200px]
-        left-[-200px]
+          bottom-[-200px]
+          left-[-200px]
 
-        w-[500px]
-        h-[500px]
+          w-[500px]
+          h-[500px]
 
-        rounded-full
+          rounded-full
 
-        bg-cyan-500/10
+          bg-cyan-500/10
 
-        blur-3xl
+          blur-3xl
 
-        pointer-events-none
-      "/>
+          pointer-events-none
+        "/>
+
         <Navbar />
 
         <main className="
@@ -73,8 +64,6 @@ const MainLayout = () => {
 
           p-6
           md:p-8
-
-          flex
 
           overflow-y-auto
         ">

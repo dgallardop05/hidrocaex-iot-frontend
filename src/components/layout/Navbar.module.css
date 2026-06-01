@@ -160,6 +160,9 @@
     padding:
       1rem;
   }
+  .status span {
+    display: none;
+  }
 
   .title {
     font-size: 1.2rem;
