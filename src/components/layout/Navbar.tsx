@@ -5,13 +5,24 @@ import {
   useLastUpdate,
 } from '@/hooks/useLastUpdate'
 
+import { useNavigate } from 'react-router-dom'
+
 import {
   Wifi,
   RefreshCw,
   Clock3,
+  LogOut,
 } from 'lucide-react'
 
 const Navbar = () => {
+
+    const navigate = useNavigate()
+
+    const handleLogout = () => {
+      localStorage.removeItem('token')
+
+      navigate('/login')
+    }
   const {
     lastUpdate,
   } = useLastUpdate()
@@ -62,6 +73,16 @@ const Navbar = () => {
               {formattedTime}
             </span>
           </div>
+          <button
+            onClick={handleLogout}
+            className={styles.logoutButton}
+          >
+            <LogOut size={15} />
+
+            <span>
+              Cerrar sesión
+            </span>
+          </button>
         </div>
       </div>
     </header>
