@@ -21,7 +21,7 @@ const Navbar = () => {
     const handleLogout = () => {
       localStorage.removeItem('token')
 
-      window.location.replace('/login')
+      navigate('/login')
     }
   const {
     lastUpdate,
