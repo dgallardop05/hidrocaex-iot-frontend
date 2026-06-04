@@ -132,6 +132,7 @@ const GeneralHistoryChart = ({
             }}
             tickLine={false}
             axisLine={false}
+            minTickGap={120}
           />
 
           <YAxis

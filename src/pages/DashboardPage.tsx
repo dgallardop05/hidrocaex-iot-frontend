@@ -50,22 +50,21 @@ const DashboardPage = () => {
       0,
     )
 
-  const activeAlerts =
-    deposits.filter(
-      (deposit) =>
-        deposit.status ===
-          'NIVEL_MINIMO'
-        ||
-        deposit.status ===
-          'NIVEL_CRITICO',
-    ).length
+  const activeAlerts = alerts.length
 
   const lastUpdate =
-    deposits.find(
-      (deposit) =>
-        deposit.updatedAt !==
-        'Sin datos',
-    )?.updatedAt ?? '—'
+    deposits
+      .filter(
+        (deposit) =>
+          deposit.updatedAt !==
+          'Sin datos',
+      )
+      .sort((a, b) =>
+        a.updatedAt.localeCompare(
+          b.updatedAt,
+        ),
+      )
+      .at(-1)?.updatedAt ?? '—'
 
   return (
     <div className="
@@ -137,14 +136,11 @@ const DashboardPage = () => {
         ))}
       </div>
 
-      {/*}/<div className="
+      <div className="
         flex
         flex-col
         gap-4
       ">
-        <h3 className="text-2xl font-semibold">
-          Histórico general
-        </h3>
 
         {historyLoading ? (
           <div className="text-white">
@@ -155,7 +151,7 @@ const DashboardPage = () => {
             data={history}
           />
         )}
-      </div>*/}
+      </div>
     </div>
   )
 }

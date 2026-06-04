@@ -9,4 +9,10 @@ export const API_ENDPOINTS = {
 
   generalHistory:
     '/historico/general',
+
+  login:
+    '/auth/login',
+
+  me:
+    '/auth/me',
 }

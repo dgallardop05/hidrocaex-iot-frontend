@@ -30,7 +30,7 @@ const Navbar = () => {
     <header className={styles.navbar}>
       <div className={styles.container}>
         <h1 className={styles.title}>
-          HidroCaex IoT
+          Depósitos Piornal
         </h1>
 
         <div className={styles.status}>

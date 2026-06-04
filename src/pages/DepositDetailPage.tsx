@@ -457,6 +457,7 @@ const DepositDetailPage = () => {
               </div>
             </div>
 
+
             <div className="
               bg-gradient-to-br
               from-slate-800

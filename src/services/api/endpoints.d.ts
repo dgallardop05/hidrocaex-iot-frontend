@@ -3,4 +3,6 @@ export declare const API_ENDPOINTS: {
     depositById: (id: string) => string;
     depositHistory: (id: string) => string;
     generalHistory: string;
+    login: string;
+    me: string;
 };

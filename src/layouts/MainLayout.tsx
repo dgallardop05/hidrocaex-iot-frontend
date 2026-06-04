@@ -59,14 +59,19 @@ const MainLayout = () => {
 
         <Navbar />
 
-        <main className="
-          flex-1
-
-          p-6
-          md:p-8
-
-          overflow-y-auto
-        ">
+        <main
+          className="
+            flex-1
+            pt-10
+            px-6
+            pb-6
+            md:pt-12
+            md:px-8
+            md:pb-8
+            flex
+            overflow-y-auto
+          "
+        >
           <Outlet />
         </main>
       </div>
